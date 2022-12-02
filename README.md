@@ -33,7 +33,7 @@ As mentioned earlier, Wine will run on most if not any common Linux distribution
 **All**
 * Launching the vChat program and exploiting it will work regardless of the distribution and OS version.
 * Local security features such as Address Space Layout Randomization (ASLR) do not appear to affect the vChar program when loaded with Wine. 
-  * This is likely due to how Wine loads both [itself](https://wiki.winehq.org/Wine_Developer%27s_Guide/Architecture_Overview), the necessary [DLLs]((https://wiki.winehq.org/Wine_Developer%27s_Guide/Kernel_modules)) and the program it is *running*
+  * This is likely due to how Wine loads both [itself](https://wiki.winehq.org/Wine_Developer%27s_Guide/Architecture_Overview), the necessary [DLLs](https://wiki.winehq.org/Wine_Developer%27s_Guide/Kernel_modules) and the program it is *running*
 * Basic functions of Meterpriter appear to work across the different distributions and versions
   * This includes file system traversal, accessing and editing files, ect.
 * Interacting with host system processes may not work, as the linux processes may be hidden from Wine. 
