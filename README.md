@@ -25,6 +25,7 @@ Wine may also produce an error such as:
 kernel32.dll could not be loaded
 ```
 ![Placeholder](https://s3-alpha.figma.com/hub/file/948140848/1f4d8ea7-e9d9-48b7-b70c-819482fb10fb-cover.png)
+
 In this case you may need to run wine as a root user (using sudo). If the issue persists you can remove the wine configuration folder located in the hidden **.wine** directory the user's (and or root's) home directory and reconfigure wine (simply by launching it again).
 
 
@@ -52,3 +53,34 @@ As mentioned earlier, Wine will run on most if not all common Linux distribution
   * Meterpriter is unable to access attached devices such as web cams.
   * Wine may need root (sudo) privileges in order to run properly.
 * I was unable to find a version that work to a similar degree 20.4.3? did.
+
+## Running the vChat executable
+
+### Starting vChat 
+As mentioned earlier you utilize wine, running as a normal user, or root user to allow the windows vChat server to work on POSIX/Linux machines. See the examples below:
+``` bash 
+$ wine vChat.exe
+
+#Or 
+
+$ sudo wine vChat.exe
+```
+![Placeholder](https://s3-alpha.figma.com/hub/file/948140848/1f4d8ea7-e9d9-48b7-b70c-819482fb10fb-cover.png)
+
+When running either for the first time, Wine will require some time to setup it's necessary configuration files.
+
+### Reconfigure Wine
+It was not necessary for us to change any default configurations in order to get vChat to work with Wine. However you may find it interesting to change certain configurations to see how it affects the program. You can do this using Wine's provided configuration tool winecfg. It will provide a graphical interfaces to configure Wine, and the environment vChat will appear to be in. See example below:
+```bash
+$ winecfg
+```
+![Placeholder](https://s3-alpha.figma.com/hub/file/948140848/1f4d8ea7-e9d9-48b7-b70c-819482fb10fb-cover.png)
+
+### Wine's Debugger
+In the event Wine crashes, it's debugger will intercept the exception or fault caused and display the state of the program at the time of the crash. This includes the stack contents, error codes, ect. See example below:
+
+![Placeholder](https://s3-alpha.figma.com/hub/file/948140848/1f4d8ea7-e9d9-48b7-b70c-819482fb10fb-cover.png)
+
+
+You will likely encounter this when you insert values onto the stack to exploit the vChat server!
+
