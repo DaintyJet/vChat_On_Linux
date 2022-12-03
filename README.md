@@ -9,7 +9,7 @@ This is a basic description of how to run the vChat server on Linux, and which v
 $ sudo apt install Wine
 ```
 
-![Some example output -- placeholder](images\Wine_Install.png)
+![Some example output -- placeholder](/images/Wine_Install.png)
 
 **Once Wine is installed** you can run vChat.exe with wine, since this will be the first time running the program it will have to configure some file, so it may take some time. The vChat.exe file **should be** in the **same** directory as the necessary DLLs, like **essfunc.dll**.
 
