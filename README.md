@@ -9,22 +9,22 @@ This is a basic description of how to run the vChat server on Linux, and which v
 $ sudo apt install Wine
 ```
 
-![Some example output -- placeholder](/images/Wine_Install.png)
+![Some example output -- my own machine](/images/Wine_Install.png)
 
-**Once Wine is installed** you can run vChat.exe with wine, since this will be the first time running the program it will have to configure some file, so it may take some time. The vChat.exe file **should be** in the **same** directory as the necessary DLLs, like **essfunc.dll**.
+**Once Wine is installed** you can run vChat.exe with wine, since this will be the first time running the program it will have to create and configure files, so it may take some time. The vChat.exe file **should be** in the **same** directory as the necessary DLLs, like **essfunc.dll**. Further whenever I ran the program through wine, I did it from the directory the vChat.exe was located in.
 
-So the command will look like the following:
+The command will look like the following:
 ```bash
 wine vChat.exe
 ```
+> See screenshots in the [Running the vChat executable](#running-the-vchat-executable) the vChat executable) section
 
 Wine may ask you to install additional drivers, in the event of this follow any instructions given (that make sense!)
 
-Wine may also produce an error such as:
+Wine may also produce an error similar to the following:
 ```
 kernel32.dll could not be loaded
 ```
-![Placeholder](https://s3-alpha.figma.com/hub/file/948140848/1f4d8ea7-e9d9-48b7-b70c-819482fb10fb-cover.png)
 
 In this case you may need to run wine as a root user (using sudo). If the issue persists you can remove the wine configuration folder located in the hidden **.wine** directory the user's (and or root's) home directory and reconfigure wine (simply by launching it again).
 
@@ -57,7 +57,7 @@ As mentioned earlier, Wine will run on most if not all common Linux distribution
 ## Running the vChat executable
 
 ### Starting vChat 
-As mentioned earlier you utilize wine, running as a normal user, or root user to allow the windows vChat server to work on POSIX/Linux machines. See the examples below:
+As mentioned earlier you utilize wine, running as a normal user, or root user to allow the windows vChat server to work on POSIX/Linux systems. See the examples below:
 ``` bash 
 $ wine vChat.exe
 
@@ -65,22 +65,28 @@ $ wine vChat.exe
 
 $ sudo wine vChat.exe
 ```
-![Placeholder](https://s3-alpha.figma.com/hub/file/948140848/1f4d8ea7-e9d9-48b7-b70c-819482fb10fb-cover.png)
+![Without Sudo](/images/Wine-UB-Fu.png)
+![With Sudo](/images/Wine-Sudo-Run.png)
+> Do note that this in on a separate Ubuntu machine then previously pictured. When creating it I made the user "kali". This is not a kali machine! The username was chosen so I could keep users identical between my VMs.
 
 When running either for the first time, Wine will require some time to setup it's necessary configuration files.
+
+The following is an example of doing this when running it with sudo for the first time:
+![Sudo first configuration](/images/Sudo-CFG.png)
 
 ### Reconfigure Wine
 It was not necessary for us to change any default configurations in order to get vChat to work with Wine. However you may find it interesting to change certain configurations to see how it affects the program. You can do this using Wine's provided configuration tool winecfg. It will provide a graphical interfaces to configure Wine, and the environment vChat will appear to be in. See example below:
 ```bash
 $ winecfg
 ```
-![Placeholder](https://s3-alpha.figma.com/hub/file/948140848/1f4d8ea7-e9d9-48b7-b70c-819482fb10fb-cover.png)
+![WineConfiguration](/images/winecfg.png)
 
 ### Wine's Debugger
-In the event Wine crashes, it's debugger will intercept the exception or fault caused and display the state of the program at the time of the crash. This includes the stack contents, error codes, ect. See example below:
+In the event Wine crashes, Wine's debugger will intercept the exception or fault caused and display the state of the program at the time of the crash. This includes the stack contents, error codes, ect. First it will notify you that an exception occurred, then you can look at further details. See an example of both below:
 
-![Placeholder](https://s3-alpha.figma.com/hub/file/948140848/1f4d8ea7-e9d9-48b7-b70c-819482fb10fb-cover.png)
+![Initial Notification](/images/debug_catch.png)
+![More Details](/images/debug_details.png)
 
 
-You will likely encounter this when you insert values onto the stack to exploit the vChat server!
+You will likely encounter this when you insert values onto the stack to exploit the vChat server and evidently crash it!
 
