@@ -53,6 +53,7 @@ As mentioned earlier, Wine will run on most if not all common Linux distribution
   * Meterpriter is unable to access attached devices such as web cams.
   * Wine may need root (sudo) privileges in order to run properly.
 * I was unable to find a version that work to a similar degree 20.4.3? did.
+___
 
 ## Running the vChat executable
 
