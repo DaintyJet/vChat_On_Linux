@@ -13,39 +13,40 @@ $ sudo apt install Wine
 
 **Once Wine is installed** you can run vChat.exe with wine, since this will be the first time running the program it will have to create and configure files, so it may take some time. The vChat.exe file **should be** in the **same** directory as the necessary DLLs, like **essfunc.dll**. Further whenever I ran the program through wine, I did it from the directory the vChat.exe was located in.
 
-> See screenshots and a more detailed explanation in the [Running the vChat executable](#running-the-vchat-executable)) section
+> See screenshots and a more detailed explanation in the [Running the vChat executable](#running-the-vchat-executable) section
 ___
 ## Environment
 ### Linux
 As mentioned earlier, Wine will run on most if not all common Linux distributions and versions. But due to reasons we likely cannot control such as kernel versions, the Meterpriter shell code that will be deployed will work better on some Linux distributions and versions.
 
-**All**
-* Launching the vChat program and exploiting it will work regardless of the distribution and OS version.
-* Local security features such as Address Space Layout Randomization (ASLR) do not appear to affect the vChar program when loaded with Wine. 
-  * This is likely due to how Wine loads both [itself](https://wiki.winehq.org/Wine_Developer%27s_Guide/Architecture_Overview), the necessary [DLLs](https://wiki.winehq.org/Wine_Developer%27s_Guide/Kernel_modules) and the program it is *running*
+**General Observations**
+* Launching the vChat program through Wine and exploiting it will work regardless of the distribution and OS version.
+* Local security features such as Address Space Layout Randomization (ASLR) do not appear to affect the vChar program when loaded through Wine. 
+  * This is likely due to how Wine loads both [itself](https://wiki.winehq.org/Wine_Developer%27s_Guide/Architecture_Overview), the necessary [DLLs](https://wiki.winehq.org/Wine_Developer%27s_Guide/Kernel_modules) and how it *runs* the program
 * Basic functions of Meterpriter appear to work across the different distributions and versions
   * This includes file system traversal, accessing and editing files, ect.
-* Interacting with host system processes may not work, as the linux processes may be hidden from Wine. 
-* Windows specific attacks and resources may not work or be accessible (They, and their specific conditions may not exist on the Linux Distribution) ex. SAM database.
-* It was **not possible** to launch the attack on a vChat server hosted locally on the same system with Wine, socket errors occurred.
+* Interacting with host system processes may not work, as the linux processes are generally hidden or seperated from Wine. 
+* Windows specific attacks and resources may not work or be accessible (They, or their specific conditions may not exist on the Linux Distribution) ex. SAM database.
+* It was **not possible** to launch the attack on a vChat server hosted locally on the same system with Wine, socket errors occurred whenver it was tried.
 
 **Ubuntu**
 * This is the Linux Distribution vChat and later Meterpriter running through Wine appeared to work the best on.
   * Once Meterpriter is running on the system it is able to access attached devices like webcams
   * On most current distributions I was unable to access the display, to take screenshots and stream the screen.
-* Ubuntu version 20.4.3? worked the best allowing for access to both the attached webcam and display
+* Ubuntu version 20.04.3 worked the best allowing for access to both the attached webcam and display
 
 **Kali Linux**
 * This Linux distribution appears to work to a similar level that Ubuntu does.
   * Meterpriter is unable to access attached devices such as web cams.
   * Wine may need root (sudo) privileges in order to run properly.
-* I was unable to find a version that work to a similar degree 20.4.3? did.
+* I was unable to find a version that work to a similar degree 20.04.3 did.
+* It was also suggested I install additional dirivers, and I ran into a  *no kernal32.dll* type of error
 ___
 
 ## Running the vChat executable
 
 ### Starting vChat 
-As mentioned earlier you utilize wine, running as a normal user, or root user to allow the windows vChat server to work on POSIX/Linux systems. When running Wine as either a normal or root user for the first time will require some time to setup it's necessary configuration files. 
+As mentioned earlier you utilize Wine, running as a normal user, or root user to allow the windows vChat server to work on POSIX/Linux systems. When running Wine as either a normal or root user for the first time will require some time to setup it's necessary configuration files. 
 
 See the examples below of how to run vChat:
 ``` bash 
