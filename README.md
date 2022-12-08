@@ -87,5 +87,5 @@ In the event Wine crashes, Wine's debugger will intercept the exception or fault
 ![More Details](/images/debug_details.png)
 
 
-You will likely encounter this when you insert values onto the stack to exploit the vChat server and evidently crash it!
+>You will likely encounter this when you insert values onto the stack to exploit the vChat server and evidently crash it!
 
