@@ -3,7 +3,7 @@ This is a basic description of how to run the [vChat](https://github.com/xinwenf
 
 ## Environment
 ### Wine
-[Wine](https://www.winehq.org/) is a compatibility layer program which allows Windows programs to be run on Linux systems by converting windows system calls to POSIX/Linux call on the fly. This can be installed on a Linux system using it's normal package manager.
+[Wine](https://www.winehq.org/) is a compatibility layer program which allows Windows programs to be run on Linux systems by converting windows system calls to POSIX/Linux call on the fly. This can be installed on a Linux system using a distribution's normal package manager.
 
 ```bash
 $ sudo apt install Wine
@@ -13,21 +13,7 @@ $ sudo apt install Wine
 
 **Once Wine is installed** you can run vChat.exe with wine, since this will be the first time running the program it will have to create and configure files, so it may take some time. The vChat.exe file **should be** in the **same** directory as the necessary DLLs, like **essfunc.dll**. Further whenever I ran the program through wine, I did it from the directory the vChat.exe was located in.
 
-The command will look like the following:
-```bash
-wine vChat.exe
-```
-> See screenshots in the [Running the vChat executable](#running-the-vchat-executable) the vChat executable) section
-
-Wine may ask you to install additional drivers, in the event of this follow any instructions given (that make sense!)
-
-Wine may also produce an error similar to the following:
-```
-kernel32.dll could not be loaded
-```
-
-In this case you may need to run wine as a root user (using sudo). If the issue persists you can remove the wine configuration folder located in the hidden **.wine** directory the user's (and or root's) home directory and reconfigure wine (simply by launching it again).
-
+> See screenshots and a more detailed explanation in the [Running the vChat executable](#running-the-vchat-executable)) section
 
 ### Linux
 As mentioned earlier, Wine will run on most if not all common Linux distributions and versions. But due to reasons we likely cannot control such as kernel versions, the Meterpriter shell code that will be deployed will work better on some Linux distributions and versions.
@@ -58,7 +44,9 @@ ___
 ## Running the vChat executable
 
 ### Starting vChat 
-As mentioned earlier you utilize wine, running as a normal user, or root user to allow the windows vChat server to work on POSIX/Linux systems. See the examples below:
+As mentioned earlier you utilize wine, running as a normal user, or root user to allow the windows vChat server to work on POSIX/Linux systems. When running Wine as either a normal or root user for the first time will require some time to setup it's necessary configuration files. 
+
+See the examples below of how to run vChat:
 ``` bash 
 $ wine vChat.exe
 
@@ -68,22 +56,30 @@ $ sudo wine vChat.exe
 ```
 ![Without Sudo](/images/Wine-UB-Fu.png)
 ![With Sudo](/images/Wine-Sudo-Run.png)
-> Do note that this in on a separate Ubuntu machine then previously pictured. When creating it I made the user "kali". This is not a kali machine! The username was chosen so I could keep users identical between my VMs.
+> Do note that these images were taken on a separate Ubuntu machine then previously pictured for the installing image. When creating them it I made the user "kali". This is not a kali machine! The username was chosen so I could keep users identical between my VMs (-Matt).
 
-When running either for the first time, Wine will require some time to setup it's necessary configuration files.
+Do note that Wine may ask you to install additional drivers, in the event of this occuring follow any instructions given (that make sense!).
 
-The following is an example of doing this when running it with sudo for the first time:
+It is also possible that Wine will produce an error when attempting to run the program similar to the following:
+```
+kernel32.dll could not be loaded
+```
+In this case you may need to run wine as a root user (using sudo). If the issue persists you can remove the wine configuration folder located in the hidden **.wine** directory the user's (and or root's) home directory and reconfigure wine (simply by launching it again) as this my be a configuration/setup error. 
+
+
+The following is an example of Wine starting the configuration process running it as sudo for the first time:
 ![Sudo first configuration](/images/Sudo-CFG.png)
+> There are a number of errors and various output occuring in the backround, they appear to have no affect when running vChat.
 
 ### Reconfigure Wine
-It was not necessary for us to change any default configurations in order to get vChat to work with Wine. However you may find it interesting to change certain configurations to see how it affects the program. You can do this using Wine's provided configuration tool winecfg. It will provide a graphical interfaces to configure Wine, and the environment vChat will appear to be in. See example below:
+It was not necessary for us to change any default configurations in order to get vChat to work with Wine. However you may find it interesting to change certain configurations to see how it affects the program. You can do this using Wine's provided configuration tool [winecfg](https://wiki.winehq.org/Winecfg). This will provide a graphical interfaces to configure Wine, and the environment vChat will appear to be in. See example below:
 ```bash
 $ winecfg
 ```
 ![WineConfiguration](/images/winecfg.png)
 
 ### Wine's Debugger
-In the event Wine crashes, Wine's debugger will intercept the exception or fault caused and display the state of the program at the time of the crash. This includes the stack contents, error codes, ect. First it will notify you that an exception occurred, then you can look at further details. See an example of both below:
+In the event Wine crashes, Wine's debugger will intercept the exception or fault caused and display the state of the program at the time of the [crash](https://wiki.winehq.org/Wine_Developer%27s_Guide/Debugging_Wine#:~:text=3%20Using%20the%20Wine%20Debugger). This includes the stack contents, error codes, ect. First it will notify you that an exception occurred, then you can look at further details. See an example of both below:
 
 ![Initial Notification](/images/debug_catch.png)
 ![More Details](/images/debug_details.png)
