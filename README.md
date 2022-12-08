@@ -1,7 +1,7 @@
 # vChat_On_Linux
 This is a basic description of how to run the [vChat](https://github.com/xinwenfu/vchat) server on Linux, and which versions of Linux gave the best results when running Meterpriter through Wine. Due to the nature of both the vChat server and Wine difficulties may be faced depending on how your system, and Wine are configured (or updated!).
 
-## Environment
+## Install
 ### Wine
 [Wine](https://www.winehq.org/) is a compatibility layer program which allows Windows programs to be run on Linux systems by converting windows system calls to POSIX/Linux call on the fly. This can be installed on a Linux system using a distribution's normal package manager.
 
@@ -14,7 +14,8 @@ $ sudo apt install Wine
 **Once Wine is installed** you can run vChat.exe with wine, since this will be the first time running the program it will have to create and configure files, so it may take some time. The vChat.exe file **should be** in the **same** directory as the necessary DLLs, like **essfunc.dll**. Further whenever I ran the program through wine, I did it from the directory the vChat.exe was located in.
 
 > See screenshots and a more detailed explanation in the [Running the vChat executable](#running-the-vchat-executable)) section
-
+___
+## Environment
 ### Linux
 As mentioned earlier, Wine will run on most if not all common Linux distributions and versions. But due to reasons we likely cannot control such as kernel versions, the Meterpriter shell code that will be deployed will work better on some Linux distributions and versions.
 
